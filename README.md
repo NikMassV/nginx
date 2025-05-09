@@ -10,6 +10,7 @@
     4. [4. Building the Docker Image](#4-Building the Docker Image)
     5. [5. Creating a Docker Network](#5-Creating a Docker Network)
     6. [6. Running Backend Applications](#6-Running Backend Applications)
+    7. [7. Launching the Reverse proxy NGINX Container](#7-Launching the Reverse proxy NGINX Container)
 
 ## Prerequisites
 
@@ -77,4 +78,12 @@ docker run --network=nginx-backend-network --name backendapp2 -p 8092:8090 --hos
 docker run --network=nginx-backend-network --name backendapp3 -p 8093:8090 --hostname=backendapp3 -d nginx
 docker run --network=nginx-backend-network --name backendapp4 -p 8094:8090 --hostname=backendapp4 -d nginx
 docker run --network=nginx-backend-network --name backendapp5 -p 8095:8090 --hostname=backendapp5 -d nginx
+```
+
+### 7. Launching the Reverse proxy NGINX Container
+
+Launch an additional NGINX container that will use its own configuration file and be connected to the same network:
+
+```bash
+docker run --network=nginx-backend-network --name nginx-server -p 8070:8080 -v localpath/nginx.conf:/etc/nginx/nginx.conf -d nginx
 ```
