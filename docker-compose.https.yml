@@ -1,0 +1,67 @@
+services:
+  backendapp1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: backendapp1
+    container_name: backendapp1
+    networks:
+      - nginx-backend-network
+
+  backendapp2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: backendapp2
+    container_name: backendapp2
+    networks:
+      - nginx-backend-network
+
+  backendapp3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: backendapp3
+    container_name: backendapp3
+    networks:
+      - nginx-backend-network
+
+  backendapp4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: backendapp4
+    container_name: backendapp4
+    networks:
+      - nginx-backend-network
+
+  backendapp5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: backendapp5
+    container_name: backendapp5
+    networks:
+      - nginx-backend-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-server
+    ports:
+      - "8070:80"
+      - "8443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backendapp1
+      - backendapp2
+      - backendapp3
+      - backendapp4
+      - backendapp5
+    networks:
+      - nginx-backend-network
+
+networks:
+  nginx-backend-network:
+    driver: bridge
