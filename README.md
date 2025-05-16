@@ -12,6 +12,7 @@
     6. [6. Running Backend Applications](#6-running-backend-applications)
     7. [7. Launching the proxy NGINX Container](#7-launching-the-proxy-nginx-container)
     8. [8. Launching the proxy NGINX Container and Backend Applications via Docker Compose](#8-launching-the-proxy-nginx-container-and-backend-applications-via-docker-compose)
+    9. [9. Using HTTPS](#9-using-https)
 
 ## Prerequisites
 
@@ -96,4 +97,14 @@ Launch a Docker Compose setup with a proxy NGINX container and backend applicati
 ```bash
 docker-compose up --build
 docker-compose down -v
+```
+
+### 9. Using HTTPS
+
+Obtain an SSL certificate use docker-compose.https.yml and nginx.https.conf:
+
+```bash
+docker-compose down -v
+docker-compose up --build
+https://localhost:8443
 ```
